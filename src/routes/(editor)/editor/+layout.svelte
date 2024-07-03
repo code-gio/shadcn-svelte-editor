@@ -3,6 +3,10 @@
 	import RightSidebar from '$lib/components/editor/right-sidebar/right-sidebar.svelte';
 </script>
 
+<svelte:head>
+	<script src="https://cdn.tailwindcss.com"></script>
+</svelte:head>
+
 <div class="flex h-full w-full gap-4">
 	<LeftSidebar />
 
