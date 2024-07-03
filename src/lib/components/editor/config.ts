@@ -24,5 +24,5 @@ export const components = [
 				size: 'default'
 			}
 		}
-	}
+	},
 ];
