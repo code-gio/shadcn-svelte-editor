@@ -9,9 +9,9 @@
 
 {#if $componentStore}
 	{#if $variantStore}
-		{#key $variantStore}
-			<div class="space-y-4">
-				{#if $variantStore.variants}
+		<div class="space-y-4">
+			{#if $variantStore.variants}
+				{#key $variantStore.variants}
 					{#each Object.entries($variantStore.variants) as [variantType, variantOptions]}
 						<div>
 							<div class="flex flex-col items-start">
@@ -19,15 +19,17 @@
 									{variantType}
 								</h2>
 								<div class="flex items-center gap-4">
-									{#each Object.entries(variantOptions) as [variantName]}
-										<Button {...getProps(variantType, variantName)}>{variantName}</Button>
+									{#each Object.entries(variantOptions) as [variantName, variantClass]}
+										{#key variantClass}
+											<Button {...getProps(variantType, variantName)}>{variantName}</Button>
+										{/key}
 									{/each}
 								</div>
 							</div>
 						</div>
 					{/each}
-				{/if}
-			</div>
-		{/key}
+				{/key}
+			{/if}
+		</div>
 	{/if}
 {/if}

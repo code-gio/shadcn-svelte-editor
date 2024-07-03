@@ -1,10 +1,10 @@
 import { type VariantProps, tv } from 'tailwind-variants';
 import type { Button as ButtonPrimitive } from 'bits-ui';
 import Root from './button.svelte';
-import { get } from 'svelte/store';
 import { variantStore } from '$lib/stores/editor';
+import { get } from 'svelte/store';
 
-const buttonVariants = tv(get(variantStore) ? get(variantStore) : {});
+const buttonVariants = tv(get(variantStore));
 type Variant = VariantProps<typeof buttonVariants>['variant'];
 type Size = VariantProps<typeof buttonVariants>['size'];
 

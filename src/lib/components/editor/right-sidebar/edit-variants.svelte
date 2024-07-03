@@ -35,7 +35,7 @@
 	}
 </script>
 
-{#if $variantStore}
+{#if $variantStore && $variantStore.variants}
 	<Tabs.Root value="variant">
 		<Tabs.List>
 			<Tabs.Trigger value="variant">Options</Tabs.Trigger>
