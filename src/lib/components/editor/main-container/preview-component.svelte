@@ -11,24 +11,24 @@
 	{#if $variantStore}
 		<div class="space-y-4">
 			{#if $variantStore.variants}
-				{#key $variantStore.variants}
-					{#each Object.entries($variantStore.variants) as [variantType, variantOptions]}
-						<div>
-							<div class="flex flex-col items-start">
-								<h2 class="mb-3 text-lg font-semibold capitalize text-foreground/80">
-									{variantType}
-								</h2>
-								<div class="flex items-center gap-4">
+				{#each Object.entries($variantStore.variants) as [variantType, variantOptions]}
+					<div>
+						<div class="flex flex-col items-start">
+							<h2 class="mb-3 text-lg font-semibold capitalize text-foreground/80">
+								{variantType}
+							</h2>
+							<div class="flex items-center gap-4">
+								{#if $componentStore === 'button'}
 									{#each Object.entries(variantOptions) as [variantName, variantClass]}
 										{#key variantClass}
 											<Button {...getProps(variantType, variantName)}>{variantName}</Button>
 										{/key}
 									{/each}
-								</div>
+								{/if}
 							</div>
 						</div>
-					{/each}
-				{/key}
+					</div>
+				{/each}
 			{/if}
 		</div>
 	{/if}

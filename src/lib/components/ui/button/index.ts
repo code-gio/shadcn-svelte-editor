@@ -1,10 +1,18 @@
 import { type VariantProps, tv } from 'tailwind-variants';
 import type { Button as ButtonPrimitive } from 'bits-ui';
 import Root from './button.svelte';
-import { variantStore } from '$lib/stores/editor';
-import { get } from 'svelte/store';
 
-const buttonVariants = tv(get(variantStore));
+import { variantStore } from '$lib/stores/editor';
+import { derived } from 'svelte/store';
+
+// Create a derived store to reactively generate buttonVariants
+const buttonVariantsStore = derived(variantStore, ($variantStore) => tv($variantStore || {}));
+
+let buttonVariants;
+buttonVariantsStore.subscribe((value) => {
+	buttonVariants = value;
+});
+
 type Variant = VariantProps<typeof buttonVariants>['variant'];
 type Size = VariantProps<typeof buttonVariants>['size'];
 
