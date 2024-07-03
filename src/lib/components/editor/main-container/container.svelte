@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { componentStore, variantStore } from '$lib/stores/editor';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import ComponentPreview from './component-preview.svelte';
 
 	function getProps(variantType: string, variantName: string) {
 		return { [variantType]: variantName };
@@ -18,13 +18,11 @@
 								{variantType}
 							</h2>
 							<div class="flex items-center gap-4">
-								{#if $componentStore === 'button'}
-									{#each Object.entries(variantOptions) as [variantName, variantClass]}
-										{#key variantClass}
-											<Button {...getProps(variantType, variantName)}>{variantName}</Button>
-										{/key}
-									{/each}
-								{/if}
+								{#each Object.entries(variantOptions) as [variantName, variantClass]}
+									{#key variantClass}
+										<ComponentPreview props={getProps(variantType, variantName)} {variantName} />
+									{/key}
+								{/each}
 							</div>
 						</div>
 					</div>
